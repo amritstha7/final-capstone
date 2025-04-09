@@ -1,0 +1,108 @@
+const products = [
+  {
+    name: "Classic White T-Shirt",
+    image: "/placeholder.svg?height=400&width=300",
+    images: [
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+    ],
+    description:
+      "A timeless classic white t-shirt made from 100% organic cotton. Features a comfortable fit and durable construction that will last through countless washes.",
+    brand: "StyleHub",
+    category: "men",
+    price: 29.99,
+    countInStock: 10,
+    rating: 4.5,
+    numReviews: 12,
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["White", "Black", "Gray"],
+    isNew: true,
+    details: {
+      material: "100% Organic Cotton",
+      fit: "Regular",
+      care: "Machine wash cold, tumble dry low",
+      origin: "Ethically made in Portugal",
+    },
+  },
+  {
+    name: "Slim Fit Jeans",
+    image: "/placeholder.svg?height=400&width=300",
+    images: [
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+    ],
+    description:
+      "Modern slim fit jeans with a slight stretch for comfort. Features a classic five-pocket design and a versatile mid-wash that pairs well with anything.",
+    brand: "StyleHub",
+    category: "men",
+    price: 59.99,
+    countInStock: 7,
+    rating: 4.0,
+    numReviews: 8,
+    sizes: ["28", "30", "32", "34", "36"],
+    colors: ["Blue", "Black", "Gray"],
+    isNew: false,
+    details: {
+      material: "98% Cotton, 2% Elastane",
+      fit: "Slim",
+      care: "Machine wash cold, inside out",
+      origin: "Made in Turkey",
+    },
+  },
+  {
+    name: "Summer Floral Dress",
+    image: "/placeholder.svg?height=400&width=300",
+    images: [
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+    ],
+    description:
+      "A lightweight floral dress perfect for summer days. Features a flattering silhouette with a flowy skirt and adjustable straps.",
+    brand: "StyleHub",
+    category: "women",
+    price: 79.99,
+    countInStock: 5,
+    rating: 4.5,
+    numReviews: 12,
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Floral Print", "Blue", "White"],
+    isNew: true,
+    details: {
+      material: "100% Viscose",
+      fit: "Regular",
+      care: "Hand wash cold, line dry",
+      origin: "Made in India",
+    },
+  },
+  {
+    name: "Leather Handbag",
+    image: "/placeholder.svg?height=400&width=300",
+    images: [
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+    ],
+    description:
+      "A premium leather handbag with a timeless design. Features multiple compartments and an adjustable shoulder strap.",
+    brand: "StyleHub",
+    category: "accessories",
+    price: 129.99,
+    countInStock: 3,
+    rating: 5,
+    numReviews: 7,
+    sizes: ["One Size"],
+    colors: ["Black", "Brown", "Tan"],
+    isNew: true,
+    details: {
+      material: "Genuine Leather",
+      dimensions: '12" x 9" x 4"',
+      care: "Wipe clean with damp cloth",
+      origin: "Made in Italy",
+    },
+  },
+]
+
+module.exports = products
