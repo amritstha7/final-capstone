@@ -63,17 +63,21 @@ function LoginPage() {
 
       console.log("Login successful:", response.data)
 
-      // Save token in localStorage
-      localStorage.setItem("token", response.data.token)
+      // Validate token before storing
+      if (response.data.token && typeof response.data.token === "string" && response.data.token.length > 0) {
+        localStorage.setItem("token", response.data.token)
 
-      // Update app state
-      login(response.data)
+        // Update app state
+        login(response.data)
 
-      // Redirect to return URL or home
-      navigate(returnUrl)
+        // Redirect to return URL or home
+        navigate(returnUrl)
+      } else {
+        throw new Error("Invalid token received from server")
+      }
     } catch (error) {
       console.error("Login error:", error)
-      setError(error.response?.data?.message || "Invalid email or password")
+      setError(error.response?.data?.message || error.message || "Invalid email or password")
     } finally {
       setIsSubmitting(false)
     }

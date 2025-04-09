@@ -17,7 +17,7 @@ export function CartProvider({ children }) {
       setLoading(true)
       const token = localStorage.getItem("token")
 
-      if (token) {
+      if (token && token !== "undefined" && token !== "null") {
         try {
           const response = await axios.get("http://localhost:3002/api/auth/profile", {
             headers: {
@@ -81,6 +81,11 @@ export function CartProvider({ children }) {
           }
         }
       } else {
+        // No valid token, clear any existing token
+        localStorage.removeItem("token")
+        setIsLoggedIn(false)
+        setUser(null)
+
         // Load anonymous cart
         try {
           const anonymousCartString = localStorage.getItem("anonymous_cart")

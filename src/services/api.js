@@ -47,7 +47,14 @@ export const getProductDetails = async (id) => {
 export const login = async (email, password) => {
   try {
     const { data } = await api.post("/auth/login", { email, password })
-    localStorage.setItem("token", data.token)
+
+    // Validate token before storing
+    if (data.token && typeof data.token === "string" && data.token.length > 0) {
+      localStorage.setItem("token", data.token)
+    } else {
+      throw new Error("Invalid token received from server")
+    }
+
     return data
   } catch (error) {
     console.error("Login error:", error)
