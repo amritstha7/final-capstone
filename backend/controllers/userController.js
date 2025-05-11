@@ -24,21 +24,13 @@ const registerUser = asyncHandler(async (req, res) => {
   })
 
   if (user) {
-    const token = user.getSignedJwtToken()
-
-    // Verify token is valid before sending
-    if (!token || token === "undefined" || token === "null") {
-      res.status(500)
-      throw new Error("Failed to generate authentication token")
-    }
-
     res.status(201).json({
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: token,
+      token: user.getSignedJwtToken(),
     })
   } else {
     res.status(400)
@@ -68,21 +60,13 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid credentials")
   }
 
-  const token = user.getSignedJwtToken()
-
-  // Verify token is valid before sending
-  if (!token || token === "undefined" || token === "null") {
-    res.status(500)
-    throw new Error("Failed to generate authentication token")
-  }
-
   res.json({
     _id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
     isAdmin: user.isAdmin,
-    token: token,
+    token: user.getSignedJwtToken(),
   })
 })
 
@@ -123,21 +107,13 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save()
 
-    const token = updatedUser.getSignedJwtToken()
-
-    // Verify token is valid before sending
-    if (!token || token === "undefined" || token === "null") {
-      res.status(500)
-      throw new Error("Failed to generate authentication token")
-    }
-
     res.json({
       _id: updatedUser._id,
       firstName: updatedUser.firstName,
       lastName: updatedUser.lastName,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
-      token: token,
+      token: updatedUser.getSignedJwtToken(),
     })
   } else {
     res.status(404)

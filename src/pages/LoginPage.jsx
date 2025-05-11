@@ -19,11 +19,11 @@ function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState(null)
 
-  const { login } = useCart()
-  const navigate = useNavigate()
+  const { login } = useCart() //is a function from your app's context to save user data/token after login.
+  const navigate = useNavigate()// lets you redirect users after successful login.
   const location = useLocation()
-  const successMessage = location.state?.message
-  const returnUrl = location.state?.returnUrl || "/"
+  const successMessage = location.state?.message//comes from redirect (like after successful signup).
+  const returnUrl = location.state?.returnUrl || "/"//is where the user should go after login — defaults to home.
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -36,10 +36,10 @@ function LoginPage() {
       setError(null)
     }
   }
-
+///main //
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    
     if (!formState.email || !formState.password) {
       setError("Please enter both email and password")
       return
@@ -49,7 +49,7 @@ function LoginPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/api/auth/login",
+        "https://final-capstone-w7hh.onrender.com/api/auth/login",
         {
           email: formState.email,
           password: formState.password,

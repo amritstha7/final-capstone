@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:3002/api"
+const API_URL = "https://final-capstone-w7hh.onrender.com/api"
 
 // Create axios instance
 const api = axios.create({

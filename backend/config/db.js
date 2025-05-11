@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/stylehub", {
+    // This is the part where your app tries to connect to MongoDB.
+    const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/aqurisaura", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

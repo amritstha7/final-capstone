@@ -182,7 +182,7 @@ function CheckoutPage() {
       const shippingPrice = formData.shippingMethod === "express" ? 9.99 : 0
       const totalPrice = itemsPrice + taxPrice + shippingPrice
 
-      // Create order object
+      // Create order object with comprehensive user information
       const orderData = {
         orderItems: cartItems.map((item) => ({
           name: item.name,
@@ -205,13 +205,20 @@ function CheckoutPage() {
         taxPrice: taxPrice,
         shippingPrice: shippingPrice,
         totalPrice: totalPrice,
+        userInfo: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          fullName: `${formData.firstName} ${formData.lastName}`,
+        },
       }
 
       console.log("Sending order data:", orderData)
 
       // Send order to backend
       const token = localStorage.getItem("token")
-      const response = await axios.post("http://localhost:3002/api/orders", orderData, {
+      const response = await axios.post("https://final-capstone-w7hh.onrender.com/api/orders", orderData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

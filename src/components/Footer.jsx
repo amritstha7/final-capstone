@@ -2,6 +2,13 @@ import { Link } from "react-router-dom"
 import { Facebook, Instagram, Twitter } from "lucide-react"
 
 function Footer() {
+  // Social media URLs
+  const socialLinks = {
+    facebook: "https://www.facebook.com/stylehub",
+    instagram: "https://www.instagram.com/stylehub_official",
+    twitter: "https://twitter.com/stylehub",
+  }
+
   return (
     <footer className="border-t bg-background">
       <div className="container px-4 py-12 mx-auto">
@@ -12,18 +19,36 @@ function Footer() {
               Premium clothing for every occasion. Quality materials, timeless designs.
             </p>
             <div className="flex space-x-4">
-              <Link to="#" className="text-muted-foreground hover:text-foreground">
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Visit our Facebook page"
+              >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
-              </Link>
-              <Link to="#" className="text-muted-foreground hover:text-foreground">
+              </a>
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Visit our Instagram page"
+              >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
-              </Link>
-              <Link to="#" className="text-muted-foreground hover:text-foreground">
+              </a>
+              <a
+                href={socialLinks.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Visit our Twitter page"
+              >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
-              </Link>
+              </a>
             </div>
           </div>
           <div className="space-y-4">
@@ -45,12 +70,12 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/products/new" className="text-muted-foreground hover:text-foreground">
+                <Link to="/new-arrivals" className="text-muted-foreground hover:text-foreground">
                   New Arrivals
                 </Link>
               </li>
               <li>
-                <Link to="/products/sale" className="text-muted-foreground hover:text-foreground">
+                <Link to="/products?sale=true" className="text-muted-foreground hover:text-foreground">
                   Sale
                 </Link>
               </li>

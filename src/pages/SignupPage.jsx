@@ -87,7 +87,7 @@ function SignupPage() {
     setIsSubmitting(true)
 
     try {
-      const response = await axios.post("http://localhost:3002/api/auth/signup", {
+      const response = await axios.post("https://final-capstone-w7hh.onrender.com/api/auth/signup", {
         firstName: formState.firstName,
         lastName: formState.lastName,
         email: formState.email,

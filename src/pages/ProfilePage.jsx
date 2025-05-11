@@ -41,7 +41,7 @@ function ProfilePage() {
           throw new Error("No authentication token found")
         }
 
-        const response = await axios.get("http://localhost:3002/api/auth/profile", {
+        const response = await axios.get("https://final-capstone-w7hh.onrender.com/api/users/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

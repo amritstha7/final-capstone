@@ -3,21 +3,27 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import axios from "axios"
 
+// Think of this as an invisible container
+//  that will store cart-related data 
+//  (items, user info, login status, etc.)
+//   so your app can access it from anywhere.
 const CartContext = createContext(undefined)
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [cartItems, setCartItems] = useState([]) //cartItems holds the items in the cart.
+  const [isLoggedIn, setIsLoggedIn] = useState(false)//isLoggedIn says if a user is logged in.
+  const [user, setUser] = useState(null)//user stores the logged-in user's info.
+  const [loading, setLoading] = useState(true)//loading helps us know when the app is still checking the user's info.
 
   // Check authentication status on mount
   useEffect(() => {
     const checkAuth = async () => {
-      setLoading(true)
+      setLoading(true)//“We’re still checking if the user is logged in.”
       const token = localStorage.getItem("token")
+ //This checks the browser’s localStorage to see if a token is saved there.
 
-      if (token && token !== "undefined" && token !== "null") {
+//  If a token is found, the app sends a GET request to the backend to verify the token and get the user’s info.
+if (token && token !== "undefined" && token !== "null") {
         try {
           const response = await axios.get("http://localhost:3002/api/auth/profile", {
             headers: {
@@ -30,7 +36,7 @@ export function CartProvider({ children }) {
 
           // After successful login, fetch user's cart from backend
           try {
-            const cartResponse = await axios.get("http://localhost:3002/api/cart", {
+            const cartResponse = await axios.get("https://final-capstone-w7hh.onrender.com/api/cart", {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
@@ -156,6 +162,7 @@ export function CartProvider({ children }) {
           item.id === product.id &&
           item.selectedSize === product.selectedSize &&
           item.selectedColor === product.selectedColor
+          //spread syntax  copy all properties of an object into a new object. 
             ? { ...item, quantity: (item.quantity || 1) + (product.quantity || 1) }
             : item,
         )
