@@ -30,6 +30,17 @@ app.use("/api/cart", cartRoutes) // Add this line
 app.get("/", (req, res) => {
   res.send("API is running...")
 })
+const path = require("path");
+
+// Serve frontend in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+}
+
 
 // Error handling middleware
 app.use(notFound)
